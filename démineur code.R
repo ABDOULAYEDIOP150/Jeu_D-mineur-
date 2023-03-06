@@ -18,3 +18,4 @@ mines <- function(plateau, nb_mines) {
     }
   }
   return(plateau)
+  }
