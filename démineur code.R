@@ -28,20 +28,20 @@ plateau
 
 
 
-
-#Calcul du nombre de mines adjacentes aux bombes
-
-
-for (i in 1:nb_lig) {
-  for (j in 1:nb_col) {
-    if (plateau[i,j] == -1) {
-      for (k in max(1, i-1):min(nb_lig, i+1)) {
-        for (l in max(1, j-1):min(nb_col, j+1)) {
-          if (plateau[k,l] != -1) {
-            plateau[k,l] <- plateau[k,l] + 1
-          }
+# Fonction pour calculer le nombre de mines adjacentes
+calculer_mines_adjacentes <- function(plateau, i, j) {
+  nb_mines_adjacentes <- 0
+  for (k in (i-1):(i+1)) {
+    for (l in (j-1):(j+1)) {
+      if (k >= 1 & k <= nrow(plateau) & l >= 1 & l <= ncol(plateau)) {
+        if (plateau[k,l] == -1) {
+          nb_mines_adjacentes <- nb_mines_adjacentes + 1
         }
       }
     }
   }
+  return(nb_mines_adjacentes)
 }
+
+#calculer_mines_adjacentes(plateau,7,4)
+#calculer_mines_adjacentes(plateau,2,5)
