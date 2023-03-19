@@ -1,6 +1,6 @@
-# Programmation_R/HAX815X
+# Jeu du Démineur
 
-Le but du projet projet est de créer une bibilothèque R incluant une application Shiny permettant de jouer au Démineur.
+Le but du projet est de créer une bibilothèque R incluant une application Shiny permettant de jouer au Démineur.
 
 
 # Membres du groupe
