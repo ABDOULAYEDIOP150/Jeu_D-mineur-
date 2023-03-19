@@ -45,3 +45,45 @@ calculer_mines_adjacentes <- function(plateau, i, j) {
 
 #calculer_mines_adjacentes(plateau,7,4)
 #calculer_mines_adjacentes(plateau,2,5)
+
+
+
+# Fonction pour afficher le tableau de jeu, sera utile dans la fonction suivante
+afficher_plateau <- function(plateau) {
+  for (i in 1:nb_lig) {
+    cat(paste(plateau[i,], collapse = " "), "\n")
+  }
+}
+
+
+
+
+# Fonction pour jouer une partie 
+
+jouer <- function() {
+  
+  affichage_plateau <- matrix("-", nrow = nb_lig, ncol = nb_col)
+  
+  
+  while (TRUE) {
+    afficher_plateau(affichage_plateau)
+    ligne <- as.integer(readline("Entrer le numéro de ligne: "))
+    colonne <- as.integer(readline("Entrer le numéro de colonne: "))
+    
+    
+    if (plateau[ligne,colonne] == "-1") {
+      print("C'est perdu!")
+      break
+    } else {
+      affichage_plateau[ligne,colonne] <- as.character(plateau[ligne,colonne])
+      if (sum(affichage_plateau == "-") == nb_mines) {
+        print("C'est gagné!")
+        break
+      }
+    }
+  }
+}
+
+
+jouer()
+
