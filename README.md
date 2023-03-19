@@ -1,2 +1,9 @@
 # Programmation_R/HAX815X
-#### Ce Projet consigne à faire une application web permettant de coder le jeu démineur sur le logiciel R
+
+#### Le but du projet projet est de créer une bibilothèque R incluant une application Shiny permettant de jouer au Démineur.
+
+
+# Membres du groupe
+
+Abdoulaye Diop : abdoulaye.diop03@etu.umontpellier.fr
+Emma Sinibaldi : emma.sinibaldi@etu.umontpellier.fr
