@@ -48,7 +48,8 @@ calculer_mines_adjacentes <- function(plateau, i, j) {
 
 
 
-# Fonction pour afficher le tableau de jeu, sera utile dans la fonction suivante
+
+# Fonction pour afficher le tableau de jeu
 afficher_plateau <- function(plateau) {
   nb_lig<- nrow(plateau)
   nb_col <- ncol(plateau)
@@ -67,15 +68,42 @@ afficher_plateau <- function(plateau) {
 
 
 
+
+# Fonction pour compter le nombre de mines adjacentes à une case
+calculer_mines_adjacentes <- function(plateau, i, j) {
+  nb_mines_adjacentes <- 0
+  for (k in (i-1):(i+1)) {
+    for (l in (j-1):(j+1)) {
+      if (k >= 1 & k <= nrow(plateau) & l >= 1 & l <= ncol(plateau)) {
+        if (plateau[k,l] == -1) {
+          nb_mines_adjacentes <- nb_mines_adjacentes + 1
+        }
+      }
+    }
+  }
+  return(nb_mines_adjacentes)
+}
+
+
+
+
+
+
+
+
+
+
+
 # Fonction pour jouer une partie 
 
 jouer <- function() {
   
   affichage_plateau <- matrix("-", nrow = nb_lig, ncol = nb_col)
-  
+  nb_lig <- nrow(plateau)
+  nb_col <- ncol(plateau)
   
   while (TRUE) {
-    afficher_plateau(affichage_plateau)
+    afficher_plateau(plateau)
     ligne <- as.integer(readline("Entrer le numéro de ligne: "))
     colonne <- as.integer(readline("Entrer le numéro de colonne: "))
     
