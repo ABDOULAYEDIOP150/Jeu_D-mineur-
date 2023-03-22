@@ -50,8 +50,17 @@ calculer_mines_adjacentes <- function(plateau, i, j) {
 
 # Fonction pour afficher le tableau de jeu, sera utile dans la fonction suivante
 afficher_plateau <- function(plateau) {
+  nb_lig<- nrow(plateau)
+  nb_col <- ncol(plateau)
   for (i in 1:nb_lig) {
-    cat(paste(plateau[i,], collapse = " "), "\n")
+    for (j in 1:nb_col) {
+      if (plateau[i, j] == -1) {
+        cat("* ")
+      } else {
+        cat(plateau[i, j], " ")
+      }
+    }
+    cat("\n")
   }
 }
 
