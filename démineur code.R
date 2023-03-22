@@ -1,5 +1,5 @@
 
-#Données de départ
+#Données de départ 
 
 nb_mines <- 40
 nb_col <- 20
@@ -28,7 +28,7 @@ plateau
 
 
 
-# Fonction pour calculer le nombre de mines adjacentes
+# Fonction pour calculer le nombre de mines adjacentes à une case sans bombe
 calculer_mines_adjacentes <- function(plateau, i, j) {
   nb_mines_adjacentes <- 0
   for (k in (i-1):(i+1)) {
@@ -51,7 +51,7 @@ calculer_mines_adjacentes <- function(plateau, i, j) {
 
 # Fonction pour afficher le tableau de jeu
 afficher_plateau <- function(plateau) {
-  nb_lig<- nrow(plateau)
+  nb_lig <- nrow(plateau)
   nb_col <- ncol(plateau)
   for (i in 1:nb_lig) {
     for (j in 1:nb_col) {
@@ -69,28 +69,6 @@ afficher_plateau <- function(plateau) {
 
 
 
-# Fonction pour compter le nombre de mines adjacentes à une case
-calculer_mines_adjacentes <- function(plateau, i, j) {
-  nb_mines_adjacentes <- 0
-  for (k in (i-1):(i+1)) {
-    for (l in (j-1):(j+1)) {
-      if (k >= 1 & k <= nrow(plateau) & l >= 1 & l <= ncol(plateau)) {
-        if (plateau[k,l] == -1) {
-          nb_mines_adjacentes <- nb_mines_adjacentes + 1
-        }
-      }
-    }
-  }
-  return(nb_mines_adjacentes)
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -101,21 +79,25 @@ jouer <- function() {
   affichage_plateau <- matrix("-", nrow = nb_lig, ncol = nb_col)
   nb_lig <- nrow(plateau)
   nb_col <- ncol(plateau)
+  game_over <- FALSE
   
-  while (TRUE) {
+  while (!game_over) {
     afficher_plateau(plateau)
     ligne <- as.integer(readline("Entrer le numéro de ligne: "))
     colonne <- as.integer(readline("Entrer le numéro de colonne: "))
     
     
     if (plateau[ligne,colonne] == "-1") {
-      print("C'est perdu!")
-      break
+      cat("C'est perdu!\n")
+      plateau[plateau == -1] <- "*"
+      afficher_plateau(plateau)
+      game_over <- TRUE
     } else {
-      affichage_plateau[ligne,colonne] <- as.character(plateau[ligne,colonne])
-      if (sum(affichage_plateau == "-") == nb_mines) {
-        print("C'est gagné!")
-        break
+      plateau[i, j] <- calculer_mines_adjacentes(plateau, i, j) 
+      if (all(plateau[plateau != -1] != 0)) {
+        cat("C'est gagné!\n")
+        afficher_plateau(plateau)
+        game_over <- TRUE
       }
     }
   }
