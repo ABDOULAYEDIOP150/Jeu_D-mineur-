@@ -76,18 +76,18 @@ afficher_plateau <- function(plateau) {
 
 jouer <- function() {
   
-  affichage_plateau <- matrix("-", nrow = nb_lig, ncol = nb_col)
+  affichage_plateau <- matrix("-", nb_lig, nb_col)
   nb_lig <- nrow(plateau)
   nb_col <- ncol(plateau)
   game_over <- FALSE
   
   while (!game_over) {
     afficher_plateau(plateau)
-    ligne <- as.integer(readline("Entrer le numéro de ligne: "))
-    colonne <- as.integer(readline("Entrer le numéro de colonne: "))
+    i <- as.integer(readline("Entrer le numéro de ligne: "))
+    j <- as.integer(readline("Entrer le numéro de colonne: "))
     
     
-    if (plateau[ligne,colonne] == "-1") {
+    if (plateau[i,j] == "-1") {
       cat("C'est perdu!\n")
       plateau[plateau == -1] <- "*"
       afficher_plateau(plateau)
