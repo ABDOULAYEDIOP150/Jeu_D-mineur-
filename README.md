@@ -6,7 +6,7 @@ Le but du projet est de créer une bibilothèque R incluant une application Shin
 
 Le jeu coniste à localiser des mines cachées dans un champs virtuel avec pour seule indication le nombres de mines dans les zones adjacentes. Le champs de mine est représenté par un grille.
 
-Chaque case de la grille peut soit cacher une une mine, soit être vide. Le but du jeu est de découvrir toutes les cases vides sans faire explose les mines.
+Chaque case de la grille peut soit cacher une une mine, soit être vide. Le but du jeu est de découvrir toutes les cases vides sans faire exploser les mines.
 
 De plus, lorsque le joueur choisis une case libre et que toutes les cases adjacentes le sont aussi, une case vide est affichée. Sinon au moins une des cases voisines contient une mine et un chiffre apparaît, indiquant le nombre de cases adjacentes contenant une mine.
 
